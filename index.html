@@ -1,1 +1,48 @@
-Hi
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ANSxCHEATS</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#070a10;color:#fff;font-family:Arial,sans-serif}
+header{padding:28px 18px;text-align:center;background:#0d121b;border-bottom:1px solid #202938}
+.logo{font-size:28px;font-weight:800;letter-spacing:1px}.sub{color:#8e99aa;margin-top:6px}
+.wrap{max-width:900px;margin:auto;padding:20px}.hero,.card{background:#111824;border:1px solid #202938;border-radius:18px;padding:22px;margin-bottom:16px}
+h2{margin-top:0}.muted{color:#9ba6b7}.btn{display:inline-block;padding:12px 18px;border-radius:12px;background:#fff;color:#070a10;text-decoration:none;font-weight:700}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.price{font-size:25px;font-weight:800;margin:12px 0}.tag{display:inline-block;padding:5px 9px;border-radius:999px;background:#202938;color:#cbd5e1;font-size:12px}
+footer{text-align:center;color:#687386;padding:25px}
+</style>
+</head>
+<body>
+<header><div class="logo">ANSxCHEATS</div><div class="sub">Tools & Packages</div></header>
+<main class="wrap">
+<section class="hero">
+<h2>Welcome 👋</h2>
+<p class="muted">This website is connected to the same API that your Sketchware app can use.</p>
+<a class="btn" href="#packages">View Packages</a>
+</section>
+<section id="packages">
+<h2>Packages</h2>
+<div id="list" class="grid"><div class="card">Loading...</div></div>
+</section>
+</main>
+<footer>ANSxCHEATS • API Demo</footer>
+<script>
+fetch('api/packages.php')
+.then(r=>r.json())
+.then(d=>{
+ const box=document.getElementById('list');
+ if(!d.status || !d.data.length){box.innerHTML='<div class="card">No packages found.</div>';return;}
+ box.innerHTML=d.data.map(x=>`
+ <div class="card">
+   <span class="tag">${x.type}</span>
+   <h3>${x.name}</h3>
+   <p class="muted">${x.description}</p>
+   <div class="price">${x.price}</div>
+ </div>`).join('');
+}).catch(()=>document.getElementById('list').innerHTML='<div class="card">API connection failed.</div>');
+</script>
+</body>
+</html>
