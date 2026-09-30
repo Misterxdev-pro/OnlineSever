@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Cloude Hub — App Information &amp; Download</title>
+<title>Cloude Hub Official &amp; Download</title>
 <meta name="description" content="Cloude Hub for Android. See what it does, which permissions it needs, what's new, and download the latest version.">
 <meta name="theme-color" content="#14120E">
 <meta property="og:title" content="Cloude Hub — App Information &amp; Download">
@@ -15,7 +15,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --ink:#14120E;
+  --ink:#0F0D09;
   --panel:#1D1A14;
   --panel-2:#27221A;
   --line:#3A3426;
@@ -31,11 +31,20 @@
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{
-  margin:0;background:var(--ink);color:var(--text);
+  margin:0;background:
+    radial-gradient(1200px 700px at 100% -10%,rgba(255,179,0,.07),transparent 60%),
+    radial-gradient(900px 600px at -10% 40%,rgba(255,179,0,.05),transparent 55%),
+    var(--ink);
+  color:var(--text);
   font:400 1rem/1.65 var(--body);
   -webkit-font-smoothing:antialiased;
   padding-top:env(safe-area-inset-top,0px);
   padding-bottom:env(safe-area-inset-bottom,0px);
+  position:relative;
+}
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.035;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 img{max-width:100%;display:block}
 a{color:inherit}
@@ -48,8 +57,23 @@ h3{font-size:1.15rem;font-weight:700;letter-spacing:-.01em;line-height:1.25}
 .lede{color:var(--muted);max-width:56ch;margin:1rem 0 0}
 .sec-head{margin-bottom:2.5rem}
 
+
+/* ---------- Telegram join gate ---------- */
+dialog#gate{border:0;padding:0;background:transparent;max-width:min(400px,92vw);width:100%;color:var(--text)}
+dialog#gate::backdrop{background:rgba(6,5,3,.72);backdrop-filter:blur(10px) saturate(1.1);-webkit-backdrop-filter:blur(10px) saturate(1.1)}
+.gate-card{position:relative;padding:2.4rem 2rem 2rem;border-radius:26px;text-align:center;background:linear-gradient(180deg,#211C13,#17140E);border:1px solid rgba(255,179,0,.3);box-shadow:0 30px 80px -20px rgba(0,0,0,.85),0 0 0 1px rgba(255,179,0,.06),0 0 90px -25px rgba(255,179,0,.4);overflow:hidden}
+.gate-card::before{content:"";position:absolute;inset:-40% -20% auto auto;width:70%;aspect-ratio:1;background:radial-gradient(closest-side,rgba(255,179,0,.18),transparent);pointer-events:none}
+.gate-badge{display:inline-flex;align-items:center;gap:.4rem;padding:.3rem .75rem;border:1px solid rgba(255,179,0,.4);border-radius:999px;color:var(--champagne);font:600 .72rem var(--body);background:rgba(255,179,0,.08);margin-bottom:1.1rem}
+.gate-badge svg{width:12px;height:12px;fill:var(--gold)}
+.gate-ico{display:grid;place-items:center;width:60px;height:60px;margin:0 auto 1.1rem;border-radius:18px;background:linear-gradient(160deg,#FFC94D,#D98F00);box-shadow:0 12px 26px -8px rgba(255,179,0,.55)}
+.gate-ico svg{width:30px;height:30px}
+.gate-card h2{font-size:1.5rem;font-weight:800}
+.gate-card p{color:var(--muted);margin:.7rem auto 1.6rem;max-width:30ch;font-size:.95rem}
+.gate-card .btn{width:100%;justify-content:center}
+body.gate-open{overflow:hidden}
+
 /* ---------- Nav ---------- */
-.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(20,18,14,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(58,52,38,.6)}
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(15,13,9,.72);backdrop-filter:blur(18px) saturate(1.3);-webkit-backdrop-filter:blur(18px) saturate(1.3);border-bottom:1px solid rgba(58,52,38,.55)}
 .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
 .brand{display:flex;align-items:center;gap:.7rem;font:700 1.05rem var(--display);text-decoration:none}
 .brand i{width:32px;height:32px;border-radius:9px;background:linear-gradient(160deg,#FFC94D,#D98F00);display:grid;place-items:center}
@@ -96,7 +120,7 @@ h3{font-size:1.15rem;font-weight:700;letter-spacing:-.01em;line-height:1.25}
 
 /* ---------- Phone ---------- */
 .phone-col{justify-self:center;position:relative}
-.phone{width:min(290px,72vw);aspect-ratio:9/18.6;border-radius:44px;background:var(--ink);border:9px solid #2D2719;box-shadow:0 0 0 1px #4A4130,0 40px 80px -20px rgba(0,0,0,.8),0 0 90px -20px rgba(255,179,0,.35);overflow:hidden;position:relative;transform:rotate(-3deg)}
+.phone{width:min(290px,72vw);aspect-ratio:9/18.6;border-radius:44px;background:var(--ink);border:9px solid #2D2719;box-shadow:0 0 0 1px #52472F,0 0 0 1.5px rgba(255,179,0,.15),0 50px 90px -20px rgba(0,0,0,.85),0 0 120px -15px rgba(255,179,0,.4);overflow:hidden;position:relative;transform:rotate(-3deg)}
 .phone::before{content:"";position:absolute;top:8px;left:50%;width:68px;height:18px;border-radius:12px;background:#000;transform:translateX(-50%);z-index:3}
 .scr{position:absolute;inset:0;padding:38px 14px 14px;display:flex;flex-direction:column;gap:12px;background:linear-gradient(180deg,#1D1A14,#14120E)}
 .scr .row{display:flex;justify-content:space-between;align-items:center}
@@ -143,7 +167,8 @@ dialog button{position:absolute;top:-14px;right:-6px;width:40px;height:40px;bord
 
 /* ---------- Features ---------- */
 .feat{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:22px;overflow:hidden;background:var(--line);gap:1px}
-.feat article{background:var(--panel);padding:1.9rem 1.7rem}
+.feat article{background:var(--panel);padding:1.9rem 1.7rem;transition:transform .25s,background .25s}
+.feat article:hover{transform:translateY(-3px);background:var(--panel-2)}
 .feat article:first-child{grid-column:span 2;background:linear-gradient(135deg,#2A2213,var(--panel) 70%)}
 .feat article:first-child h3{font-size:1.6rem}
 .ico{width:44px;height:44px;border-radius:13px;display:grid;place-items:center;background:rgba(255,179,0,.12);border:1px solid rgba(255,179,0,.3);margin-bottom:1.1rem}
@@ -154,7 +179,8 @@ dialog button{position:absolute;top:-14px;right:-6px;width:40px;height:40px;bord
 
 /* ---------- Permissions ---------- */
 .perms{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
-.perm{display:flex;gap:1.1rem;padding:1.5rem;border:1px solid var(--line);border-radius:20px;background:var(--panel)}
+.perm{display:flex;gap:1.1rem;padding:1.5rem;border:1px solid var(--line);border-radius:20px;background:var(--panel);transition:transform .25s,border-color .25s}
+.perm:hover{transform:translateY(-3px);border-color:rgba(255,179,0,.35)}
 .perm .ico{flex:0 0 auto;margin:0}
 .perm .tag{display:inline-block;margin-left:.5rem;padding:.1rem .55rem;border-radius:999px;border:1px solid var(--line);color:var(--muted);font:600 .74rem var(--body);vertical-align:middle}
 @media(max-width:760px){.perms{grid-template-columns:1fr}}
@@ -246,6 +272,19 @@ footer a:hover{color:var(--text)}
 </head>
 <body>
 <div id="progress" aria-hidden="true"></div>
+<dialog id="gate" aria-labelledby="gate-title">
+  <div class="gate-card">
+    <span class="gate-badge"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>Premium Community</span>
+    <span class="gate-ico"><svg viewBox="0 0 24 24" aria-hidden="true" style="fill:#1A1200;stroke:none"><path d="M21.5 3.5L2.8 10.7c-.9.4-.9 1.2 0 1.5l4.8 1.5 1.8 5.6c.2.6.9.8 1.4.4l2.7-2.2 4.9 3.6c.6.4 1.3.1 1.5-.6L23 5.2c.2-.9-.6-1.4-1.5-1.7zM9.2 13.4l9-5.6-6.9 6.6-.3 3.1z"/></svg></span>
+    <h2 id="gate-title">Join the Cloude Hub channel</h2>
+    <p>Get new releases, plugin drops and support first — before anyone else.</p>
+    <a class="btn btn-gold" id="gate-join" href="https://t.me/CloudeHubGfx" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" aria-hidden="true" style="fill:#1A1200;stroke:none"><path d="M21.5 3.5L2.8 10.7c-.9.4-.9 1.2 0 1.5l4.8 1.5 1.8 5.6c.2.6.9.8 1.4.4l2.7-2.2 4.9 3.6c.6.4 1.3.1 1.5-.6L23 5.2c.2-.9-.6-1.4-1.5-1.7zM9.2 13.4l9-5.6-6.9 6.6-.3 3.1z"/></svg>
+      Join Telegram
+    </a>
+  </div>
+</dialog>
+
 
 <header class="nav">
   <div class="wrap">
@@ -394,13 +433,21 @@ footer a:hover{color:var(--text)}
 /* =====================================================================
    EDIT THIS BLOCK ONLY — everything on the page is generated from it.
    ===================================================================== */
+const _dlKey = "CloudeHub2026";
+const _dl = "KxgbBRdfZ1oFW0RaQyFCDBoJSgUcEUZVQE4nCRlYFBcnWi1cXFtYJj8KAwEXZwcDRR9fVyoCQDYICj0RBxcCAn42DkpHVFdmRUxTQFk=";
+function decodeDL() {
+  const raw = atob(_dl);
+  let out = "";
+  for (let i = 0; i < raw.length; i++) out += String.fromCharCode(raw.charCodeAt(i) ^ _dlKey.charCodeAt(i % _dlKey.length));
+  return out;
+}
 const APP = {
   name: "Cloude Hub",
   badge: "Premium",
-  developer: "ANSxCHEATS",
+  developer: "Cloude Hub",
   tagline: "Manage your gaming experience tools from one place.",
 
-  downloadUrl: "https://github.com/Misterxdev-pro/OnlineSever/raw/main/CloudeHub.apk",
+  downloadUrl: "",  // resolved at runtime from _dl (obfuscated) — see decodeDL() below
   telegramUrl: "https://t.me/CloudeHubGfx",
   telegramHandle: "@CloudeHubGfx",
   tiktokUrl: "https://www.tiktok.com/@cloudehub",
@@ -408,10 +455,11 @@ const APP = {
 
   // Direct image links (the hero phone image is set in the HTML above).
   screenshots: [
-    { src: "https://i.ibb.co/xqgdGHRB/1002611970.jpg", alt: "Cloude Hub home screen with Game Control and Quick Access" },
-    { src: "https://i.ibb.co/LDpmjyTL/1002611971.jpg", alt: "Cloude Hub plugins screen" },
-    { src: "https://i.ibb.co/S7WDqVJ3/1002611972.jpg", alt: "Cloude Hub app screen" },
-    { src: "https://i.ibb.co/TqqRM0HQ/1002611973.jpg", alt: "Game Turbo screen with Turbo Mode, live status and system information" }
+    { src: "https://i.ibb.co/zhnLc49C/1002613983.jpg", alt: "Cloude Hub home screen with Game Control and Quick Access" },
+    { src: "https://i.ibb.co/xqgdGHRB/1002611970.jpg", alt: "Cloude Hub screenshot" },
+    { src: "https://i.ibb.co/LDpmjyTL/1002611971.jpg", alt: "Cloude Hub screenshot" },
+    { src: "https://i.ibb.co/S7WDqVJ3/1002611972.jpg", alt: "Cloude Hub screenshot" },
+    { src: "https://i.ibb.co/TqqRM0HQ/1002611973.jpg", alt: "Cloude Hub screenshot" }
   ],
 
   features: [
@@ -437,7 +485,7 @@ const APP = {
   ],
 
   changelog: [
-    { version: "2.0", date: "24 Sep 2026", notes: ["Game Control home with Quick Access.", "Game Turbo with live status and system information.", "Plugin library with search, filters, download and restore."] }
+    { version: "3.0", date: "30 Sep 2026", notes: ["Game Control home with Quick Access.", "Game Turbo with live status and system information.", "Plugin library with search, filters, download and restore."] }
   ],
 
   faq: [
@@ -466,6 +514,7 @@ const $ = s => document.querySelector(s);
 
 // Plain text bindings
 document.querySelectorAll("[data-app]").forEach(el => { el.textContent = APP[el.dataset.app] ?? ""; });
+APP.downloadUrl = decodeDL();
 document.querySelectorAll("[data-download]").forEach(el => { el.href = APP.downloadUrl; });
 document.querySelectorAll("[data-telegram]").forEach(el => { el.href = APP.telegramUrl; });
 document.querySelectorAll("[data-tiktok]").forEach(el => { el.href = APP.tiktokUrl; });
@@ -519,6 +568,30 @@ $("#social").innerHTML = [
   ["music", "TikTok", APP.tiktokHandle, "Videos and news from Cloude Hub.", APP.tiktokUrl]
 ].map(([ic, t, hnd, tx, url]) =>
   `<a class="soc" href="${url}" target="_blank" rel="noopener">${icon(ic)}<div><h3>${t} <span style="color:var(--gold);font-weight:600">${hnd}</span></h3><p>${tx}</p></div><span class="go" aria-hidden="true">→</span></a>`).join("");
+
+
+/* ---------------- Telegram join gate ---------------- */
+(() => {
+  const dlg = document.getElementById("gate");
+  if (!dlg) return;
+  const KEY = "ch_gate_seen";
+  let seen = false;
+  try { seen = sessionStorage.getItem(KEY) === "1"; } catch (e) {}
+  const open = () => {
+    document.body.classList.add("gate-open");
+    if (typeof dlg.showModal === "function") dlg.showModal();
+    else dlg.setAttribute("open", "");
+  };
+  const close = () => {
+    document.body.classList.remove("gate-open");
+    if (typeof dlg.close === "function" && dlg.open) dlg.close();
+    else dlg.removeAttribute("open");
+    try { sessionStorage.setItem(KEY, "1"); } catch (e) {}
+  };
+  if (!seen) setTimeout(open, 500);
+  document.getElementById("gate-join").addEventListener("click", () => setTimeout(close, 150));
+  dlg.addEventListener("cancel", e => { e.preventDefault(); close(); });
+})();
 
 /* ---------------- Effects ---------------- */
 (() => {
